@@ -13,3 +13,11 @@ obj/ft_strlen.o: /usr/include/getopt.h /usr/include/limits.h
 obj/ft_strlen.o: /usr/include/stdint.h /usr/include/stdio.h
 obj/ft_strlen.o: /usr/include/libio.h /usr/include/_G_config.h
 obj/ft_strlen.o: /usr/include/wchar.h
+obj/ft_strchr.o: include/common.h /usr/include/unistd.h
+obj/ft_strchr.o: /usr/include/features.h /usr/include/stdc-predef.h
+obj/ft_strchr.o: /usr/include/getopt.h /usr/include/stdlib.h
+obj/ft_strchr.o: /usr/include/alloca.h
+obj/ft_strndup.o: include/common.h /usr/include/unistd.h
+obj/ft_strndup.o: /usr/include/features.h /usr/include/stdc-predef.h
+obj/ft_strndup.o: /usr/include/getopt.h /usr/include/stdlib.h
+obj/ft_strndup.o: /usr/include/alloca.h
