@@ -1,35 +1,50 @@
-#include"common.h"
-#include<limits.h>
-#include<stdint.h>
+#include "common.h"
+#include <limits.h>
+#include <stdint.h>
+#include <stdio.h>
 
-# define HIMAGIC 0x8080808080808080L
-# define LOMAGIC 0x0101010101010101L
-
-# if ( __WORDSIZE == 64)
-size_t	ft_strlen(const char*str)
+static size_t	strlen_bis(const char *str, const char *cp)
 {
-	const char*char_ptr;
-	const unsigned long long*longword_ptr;
-	unsigned long long longword;
-	for(char_ptr=str;((unsigned long long)char_ptr
-				& 8)!=0;
-			++char_ptr)
-		if(*char_ptr=='\0')
-			return char_ptr-str;
-	longword_ptr=(unsigned long long*)char_ptr;
-	for(;;)
+	if (!cp[0])
+		return (cp - str);
+	else if (!cp[1])
+		return (cp - str + 1);
+	else if (!cp[2])
+		return (cp - str + 2);
+	else if (!cp[3])
+		return (cp - str + 3);
+	else if (!cp[4])
+		return (cp - str + 4);
+	else if (!cp[5])
+		return (cp - str + 5);
+	else if (!cp[6])
+		return (cp - str + 6);
+	else
+		return (cp - str + 7);
+}
+
+size_t			ft_strlen(const char *str)
+{
+	const uint64_t	*s;
+	const uint64_t	himagic = ((0x80808080L << 16) << 16) | 0x80808080L;
+	const uint64_t	lomagic = ((0x01010101L << 16) << 16) | 0x01010101L;
+	int				test;
+	const char		*tmp;
+
+	tmp = str;
+	while (((uint64_t)tmp & (sizeof(uint64_t) - 1)) != 0)
 	{
-		longword=*longword_ptr++;
-
-		if(((longword-LOMAGIC)&HIMAGIC))
+		if (*tmp == '\0')
+			return (tmp - str);
+		++tmp;
+	}
+	s = (uint64_t *)tmp;
+	while (42)
+	{
+		if (((*s++ - lomagic) & himagic) != 0)
 		{
-			const  char *cp=(const char*)(longword_ptr-1);
-
-			if(!(*cp++) || !(*cp++) || !(*cp++) || !(*cp++))
-				return cp-str;
-			if(!(*cp++) || !(*cp++) || !(*cp++) || !(*cp++))
-				return cp-str;
+			if ((test = strlen_bis(str, (const char *)(s - 1))))
+				return (test);
 		}
 	}
 }
-#endif

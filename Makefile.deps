@@ -1,6 +1,15 @@
 # DO NOT DELETE
 
+obj/ft_strdup.o: include/common.h /usr/include/unistd.h
+obj/ft_strdup.o: /usr/include/features.h /usr/include/stdc-predef.h
+obj/ft_strdup.o: /usr/include/getopt.h /usr/include/stdlib.h
+obj/ft_strdup.o: /usr/include/alloca.h /usr/include/stdint.h
+obj/ft_memcpy.o: include/common.h /usr/include/unistd.h
+obj/ft_memcpy.o: /usr/include/features.h /usr/include/stdc-predef.h
+obj/ft_memcpy.o: /usr/include/getopt.h /usr/include/stdint.h
 obj/ft_strlen.o: include/common.h /usr/include/unistd.h
 obj/ft_strlen.o: /usr/include/features.h /usr/include/stdc-predef.h
 obj/ft_strlen.o: /usr/include/getopt.h /usr/include/limits.h
-obj/ft_strlen.o: /usr/include/stdint.h
+obj/ft_strlen.o: /usr/include/stdint.h /usr/include/stdio.h
+obj/ft_strlen.o: /usr/include/libio.h /usr/include/_G_config.h
+obj/ft_strlen.o: /usr/include/wchar.h

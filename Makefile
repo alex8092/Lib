@@ -13,6 +13,7 @@ else
 endif
 
 LDFLAGS = 
+
 SRCS = $(shell find src -name "*.c")
 
 HEADERS = $(shell find include -name "*.h")
