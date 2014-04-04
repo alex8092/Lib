@@ -1,0 +1,6 @@
+# DO NOT DELETE
+
+obj/ft_strlen.o: include/common.h /usr/include/unistd.h
+obj/ft_strlen.o: /usr/include/features.h /usr/include/stdc-predef.h
+obj/ft_strlen.o: /usr/include/getopt.h /usr/include/limits.h
+obj/ft_strlen.o: /usr/include/stdint.h
