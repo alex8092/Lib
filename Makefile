@@ -1,6 +1,6 @@
 CC = gcc
 
-NAME = libft.a
+NAME = lib/libft.a
 
 DEBUG = false
 
@@ -12,7 +12,7 @@ else
 	CFLAGS += -O3
 endif
 
-LDFLAGS = 
+LDFLAGS = -lft -Llib -Iinclude
 
 SRCS = $(shell find src -name "*.c")
 
@@ -22,10 +22,21 @@ OBJS = $(patsubst src/%,obj/%,$(SRCS:.c=.o))
 
 OBJS_DIR = $(addsuffix .dir,$(OBJS))
 
+SRCS_TEST = $(shell find tests -name "*.c")
+
 all: Makefile.deps $(OBJS_DIR) $(NAME)
 
+test: tests/test.bin
+
+run: test
+	./tests/test.bin
+
+tests/test.bin:
+	gcc -o tests/test.bin $(SRCS_TEST) $(CFLAGS) $(LDFLAGS)
+
 $(NAME): $(OBJS)
-	ar rc $@ $(OBJS) $(LDFLAGS)
+	mkdir -p $(dir $@)
+	ar rc $@ $(OBJS)
 	ranlib $@
 
 -include Makefile.deps
@@ -40,7 +51,7 @@ clean:
 	rm -rf obj
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf lib
 
 re: fclean all
 
@@ -48,4 +59,4 @@ Makefile.deps: $(SRCS) $(HEADERS)
 	@makedepend -- $(CFLAGS) -- $(SRCS) -f- > Makefile.deps 2> /dev/null
 	@\vim Makefile.deps -c '%s/src\//obj\//g' -c wq
 
-.PHONY: clean fclean all re deps
+.PHONY: clean fclean all re test run tests/test.bin
