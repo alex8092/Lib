@@ -1,5 +1,8 @@
 # DO NOT DELETE
 
+obj/ft_memalloc.o: include/common.h /usr/include/unistd.h
+obj/ft_memalloc.o: /usr/include/features.h /usr/include/stdc-predef.h
+obj/ft_memalloc.o: /usr/include/getopt.h
 obj/ft_strdup.o: include/common.h /usr/include/unistd.h
 obj/ft_strdup.o: /usr/include/features.h /usr/include/stdc-predef.h
 obj/ft_strdup.o: /usr/include/getopt.h /usr/include/stdlib.h

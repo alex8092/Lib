@@ -4,7 +4,7 @@ NAME = lib/libft.a
 
 DEBUG = false
 
-CFLAGS = -Wall -Wextra -Iinclude
+CFLAGS = -Wall -Wextra -Iinclude -march=native
 
 ifeq ($(DEBUG),true)
 	CFLAGS += -g3
@@ -12,7 +12,7 @@ else
 	CFLAGS += -O3
 endif
 
-LDFLAGS = -lft -Llib -Iinclude
+LDFLAGS = -lft -Llib -Iinclude -march=native
 
 SRCS = $(shell find src -name "*.c")
 
