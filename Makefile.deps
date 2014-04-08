@@ -1,15 +1,5 @@
 # DO NOT DELETE
 
-obj/ft_memalloc.o: include/common.h /usr/include/unistd.h
-obj/ft_memalloc.o: /usr/include/features.h /usr/include/stdc-predef.h
-obj/ft_memalloc.o: /usr/include/getopt.h
-obj/ft_strdup.o: include/common.h /usr/include/unistd.h
-obj/ft_strdup.o: /usr/include/features.h /usr/include/stdc-predef.h
-obj/ft_strdup.o: /usr/include/getopt.h /usr/include/stdlib.h
-obj/ft_strdup.o: /usr/include/alloca.h /usr/include/stdint.h
-obj/ft_memcpy.o: include/common.h /usr/include/unistd.h
-obj/ft_memcpy.o: /usr/include/features.h /usr/include/stdc-predef.h
-obj/ft_memcpy.o: /usr/include/getopt.h /usr/include/stdint.h
 obj/ft_strlen.o: include/common.h /usr/include/unistd.h
 obj/ft_strlen.o: /usr/include/features.h /usr/include/stdc-predef.h
 obj/ft_strlen.o: /usr/include/getopt.h /usr/include/limits.h
@@ -24,3 +14,17 @@ obj/ft_strndup.o: include/common.h /usr/include/unistd.h
 obj/ft_strndup.o: /usr/include/features.h /usr/include/stdc-predef.h
 obj/ft_strndup.o: /usr/include/getopt.h /usr/include/stdlib.h
 obj/ft_strndup.o: /usr/include/alloca.h
+obj/ft_strdup.o: include/common.h /usr/include/unistd.h
+obj/ft_strdup.o: /usr/include/features.h /usr/include/stdc-predef.h
+obj/ft_strdup.o: /usr/include/getopt.h /usr/include/stdlib.h
+obj/ft_strdup.o: /usr/include/alloca.h /usr/include/stdint.h
+obj/ft_memcpy.o: include/common.h /usr/include/unistd.h
+obj/ft_memcpy.o: /usr/include/features.h /usr/include/stdc-predef.h
+obj/ft_memcpy.o: /usr/include/getopt.h /usr/include/stdint.h
+obj/ft_memalloc.o: include/common.h /usr/include/unistd.h
+obj/ft_memalloc.o: /usr/include/features.h /usr/include/stdc-predef.h
+obj/ft_memalloc.o: /usr/include/getopt.h /usr/include/stdlib.h
+obj/ft_memalloc.o: /usr/include/alloca.h
+obj/ft_findinarray.o: include/common.h /usr/include/unistd.h
+obj/ft_findinarray.o: /usr/include/features.h /usr/include/stdc-predef.h
+obj/ft_findinarray.o: /usr/include/getopt.h
