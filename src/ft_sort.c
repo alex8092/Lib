@@ -10,58 +10,31 @@ static void		ft_swap(char **tab, size_t i, size_t j)
 	tab[j] = str;
 }
 
-static void		ft_print_debug(char **tab)
-{
-	size_t	i;
-
-	i = 0;
-	printf("##DEBUG\n");
-	while (tab[i])
-	{
-		printf("\t%s\n", tab[i]);
-		++i;
-	}
-	printf("##ENDDEBUG\n");
-}
-
 static size_t	ft_sort_bis(char **tab, size_t len, int (*cmp)())
 {
-	size_t	ref;
-	size_t	begin;
-	size_t	i;
-	size_t	j;
-	int		res;
-	int		gauche;
+	size_t	r[] = { 0, 0, len - 1, 1 };
 
 	if (len < 2)
 		return (0);
-	ref = 0;
-	i = 0;
-	j = len - 1;
-	gauche = 1;
-	while ((i < len / 2 && j > 0) || (j > len / 2 && i < len))
+	while ((r[1] < len / 2 && r[2] > 0) || (r[2] > len / 2 && r[1] < len))
 	{
-		if (gauche && cmp(tab[ref], tab[j]) > 0)
+		if (r[3] == 1 && cmp(tab[r[0]], tab[r[2]]) > 0)
 		{
-			ft_swap(tab, ref, j);
-			ref = j;
-			gauche = 0;
+			ft_swap(tab, r[0], r[2]);
+			r[0] = r[2];
+			r[3] = 2;
 		}
-		else if (!gauche && cmp(tab[i], tab[ref]) > 0)
+		else if (r[3] == 2 && cmp(tab[r[1]], tab[r[0]]) > 0)
 		{
-			ft_swap(tab, ref, i);
-			ref = i;
-			gauche = 1;
+			ft_swap(tab, r[0], r[1]);
+			r[0] = r[1];
+			r[3] = 1;
 		}
-		if (gauche)
-			--j;
-		else
-			++i;
+		r[2] = (r[3] == 1) ? r[2] - 1 : r[2];
+		r[1] = (r[3] != 1) ? r[1] + 1 : r[1];
 	}
-	printf("ref : %ld\n", ref);
-	printf("len - ref : %ld\n", len - ref);
-	ft_sort_bis(tab, ref, cmp);
-	ft_sort_bis(tab + ref + 1, len - ref - 1, cmp);
+	ft_sort_bis(tab, r[0], cmp);
+	ft_sort_bis(tab + r[0] + 1, len - r[0] - 1, cmp);
 	return (0);
 }
 
