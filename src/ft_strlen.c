@@ -19,8 +19,9 @@ static size_t	strlen_bis(const char *str, const char *cp)
 		return (cp - str + 5);
 	else if (!cp[6])
 		return (cp - str + 6);
-	else
+	else if (!cp[7])
 		return (cp - str + 7);
+	return (-1);
 }
 
 size_t			ft_strlen(const char *str)
@@ -28,13 +29,13 @@ size_t			ft_strlen(const char *str)
 	const uint64_t	*s;
 	const uint64_t	himagic = ((0x80808080L << 16) << 16) | 0x80808080L;
 	const uint64_t	lomagic = ((0x01010101L << 16) << 16) | 0x01010101L;
-	int				test;
-	const char		*tmp;
+	uint64_t		test;
+	char			*tmp;
 
-	tmp = str;
+	tmp = (char *)str;
 	while (((uint64_t)tmp & (sizeof(uint64_t) - 1)) != 0)
 	{
-		if (*tmp == '\0')
+		if (!*tmp)
 			return (tmp - str);
 		++tmp;
 	}
@@ -43,7 +44,7 @@ size_t			ft_strlen(const char *str)
 	{
 		if (((*s++ - lomagic) & himagic) != 0)
 		{
-			if ((test = strlen_bis(str, (const char *)(s - 1))))
+			if ((test = strlen_bis(str, (const char *)(s - 1))) != (size_t)-1)
 				return (test);
 		}
 	}

@@ -2,13 +2,9 @@
 
 int	ft_findinarray(char *array, char c)
 {
-	int	index;
-
-	index = 0;
-	while (array[index])
-	{
-		if (array[index] == c)
-			return (index);
-	}
+	char	*s;
+	
+	if ((s = ft_strchr(array, c)))
+		return (s - array);
 	return (-1);
 }

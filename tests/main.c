@@ -4,6 +4,7 @@
 #include <strings.h>
 #include <stdio.h>
 #include <string.h>
+#include <fcntl.h>
 
 clock_t	begin;
 
@@ -28,6 +29,16 @@ char	*ft_strchr2(char *str, int c)
 	return (NULL);
 }
 
+int		ft_strcmp2(char *str1, char *str2)
+{
+	while (*str1 && *str2 && *str1 == *str2)
+	{
+		++str1;
+		++str2;
+	}
+	return (*str2 - *str1);
+}
+
 void	performing_strchr(void)
 {
 	char	*str;
@@ -48,21 +59,30 @@ void	performing_strchr(void)
 		printf("%s\n\n%s\n", str, str2);
 	begin_test();
 	for (i = 0; i < 100000; ++i)
-		strchr(str, 'B');
+		strcmp(str, str2);
 	printf("strchr : %ld\n", end_test());
 	begin_test();
 	for (i = 0; i < 100000; ++i)
-		ft_strchr(str, 'B');
+		ft_strcmp(str, str2);
 	printf("ft_strchr : %ld\n", end_test());
 	begin_test();
 	for (i = 0; i < 100000; ++i)
-		ft_strchr2(str, 'B');
+		ft_strcmp2(str, str2);
 	printf("ft_strchr2 : %ld\n", end_test());
 	free(str);
 }
 
 int	main(void)
 {
-	performing_strchr();
+	int		fd;
+	char	*line;
+
+	fd = open("test", O_RDONLY);
+	while (ft_getnextline(fd, &line) > 0)
+	{
+		write(1, line, strlen(line));
+		write(1, "\n", 1);
+		free(line);
+	}
 	return (0);
 }
