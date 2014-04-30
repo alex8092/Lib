@@ -76,8 +76,17 @@ int	main(void)
 {
 	int		fd;
 	char	*line;
+	int		i;
 
+	i = -10;
 	fd = open("test", O_RDONLY);
+	
+	while (i <= 10)
+	{
+		ft_putstr(ft_itoa(i++));
+		ft_putchar('\n');
+	}
+
 	while (ft_getnextline(fd, &line) > 0)
 	{
 		write(1, line, strlen(line));

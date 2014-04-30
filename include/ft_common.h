@@ -8,6 +8,7 @@
 size_t		ft_strlen(const char *s);
 size_t		ft_strcmp(const char *s1, const char *s2);
 
+char		*ft_itoa(long int nbr);
 char		*ft_strdup(const char *s);
 char		*ft_strndup(const char *s, size_t n);
 char		*ft_strchr(const char *s, int c);
