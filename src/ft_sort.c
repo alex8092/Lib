@@ -1,4 +1,5 @@
 #include "ft_common.h"
+#include <string.h>
 
 static void		ft_swap(char **tab, size_t i, size_t j)
 {
@@ -28,36 +29,39 @@ static size_t	ft_sort_bis(char **tab, size_t len, int (*cmp)())
 	size_t	ref;
 	size_t	begin;
 	size_t	i;
+	size_t	j;
 	int		res;
+	int		gauche;
 
+	if (len < 2)
+		return (0);
 	ref = 0;
 	i = 0;
-	while (i < len / 2)
+	j = len - 1;
+	gauche = 1;
+	while ((i < len / 2 && j > 0) || (j > len / 2 && i < len))
 	{
-		printf("cmp : \"%s\"(%ld) - \"%s\"(%ld)\n", tab[ref], ref, tab[len - i - 1], len - i - 1);
-		if (((res = cmp(tab[ref], tab[len - i - 1])) > 0 && ref > len - i - 1)
-			|| (res < 0 && ref < len - i - 1))
+		if (gauche && cmp(tab[ref], tab[j]) > 0)
 		{
-			printf("in swap\n");
-			ft_swap(tab, ref, len - i -1);
-			ref = len - i - 1;
+			ft_swap(tab, ref, j);
+			ref = j;
+			gauche = 0;
 		}
-		else
-			printf("no swap : %d\n", cmp(tab[ref], tab[len - i - 1]));
-		ft_print_debug(tab);
-		++i;
-		printf("cmp : \"%s\"(%ld) - \"%s\"(%ld)\n", tab[ref], ref, tab[i], i);
-		if (((res = cmp(tab[ref], tab[i])) > 0 && ref > i)
-			|| (res < 0 && ref < i))
+		else if (!gauche && cmp(tab[i], tab[ref]) > 0)
 		{
-			printf("in swap\n");
 			ft_swap(tab, ref, i);
 			ref = i;
+			gauche = 1;
 		}
+		if (gauche)
+			--j;
 		else
-			printf("no swap : %d\n", cmp(tab[ref], tab[i]));
-		ft_print_debug(tab);
+			++i;
 	}
+	printf("ref : %ld\n", ref);
+	printf("len - ref : %ld\n", len - ref);
+	ft_sort_bis(tab, ref, cmp);
+	ft_sort_bis(tab + ref + 1, len - ref - 1, cmp);
 	return (0);
 }
 

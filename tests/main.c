@@ -74,7 +74,7 @@ void	performing_strchr(void)
 
 int	main(void)
 {
-	char	*tab[] = { "28", "40", "10", "8", "77", "54", "2", 0 };
+	char	*tab[] = { "af", "ag", "aa", "ac", "az", "aa", "ap", 0 };
 	size_t	i;
 
 	ft_sort(tab, NULL);
