@@ -74,24 +74,15 @@ void	performing_strchr(void)
 
 int	main(void)
 {
-	int		fd;
-	char	*line;
-	int		i;
+	char	*tab[] = { "af", "ag", "aa", "ac", "az", "aa", "ap", 0 };
+	size_t	i;
 
-	i = -10;
-	fd = open("test", O_RDONLY);
-	
-	while (i <= 10)
+	ft_sort(tab, NULL);
+	i = 0;
+	while (tab[i])
 	{
-		ft_putstr(ft_itoa(i++));
-		ft_putchar('\n');
-	}
-
-	while (ft_getnextline(fd, &line) > 0)
-	{
-		write(1, line, strlen(line));
-		write(1, "\n", 1);
-		free(line);
+		printf("str : %s\n", tab[i]);
+		++i;
 	}
 	return (0);
 }
