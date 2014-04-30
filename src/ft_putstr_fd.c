@@ -2,5 +2,8 @@
 
 void	ft_putstr_fd(char *str, int fd)
 {
-	write(fd, str, ft_strlen(str));
+	ssize_t	ret;
+
+	ret = write(fd, str, ft_strlen(str));
+	(void)ret;
 }

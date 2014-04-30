@@ -2,5 +2,8 @@
 
 void	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	ssize_t	ret;
+
+	ret = write(1, &c, 1);
+	(void)ret;
 }

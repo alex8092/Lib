@@ -31,13 +31,13 @@ void		ft_bzero(void *ptr, size_t n);
 void		ft_putchar(char c);
 void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *str, int fd);
-void		ft_putstr_fd_static(char *str, int fd, size_t n);
+void		ft_putnstr_fd(char *str, int fd, size_t n);
 void		ft_putstr(char *str);
-void		ft_putstr_static(char *str, size_t n);
+void		ft_putnstr(char *str, size_t n);
 void		ft_putendl(char *str);
-void		ft_putendl_static(char *str, size_t n);
+void		ft_putnendl(char *str, size_t n);
 void		ft_putendl_fd(char *str, int fd);
-void		ft_putendl_fd_static(char *str, int fd, size_t n);
+void		ft_putnendl_fd(char *str, int fd, size_t n);
 void		ft_putnbr(long int number);
 void		ft_putnbr_fd(long int number, int fd);
 

@@ -38,7 +38,7 @@ static size_t	ft_sort_bis(char **tab, size_t len, int (*cmp)())
 	return (0);
 }
 
-char	**ft_sort(char **tab, int (*cmp)())
+char			**ft_sort(char **tab, int (*cmp)())
 {
 	size_t	i;
 
