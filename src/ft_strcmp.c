@@ -31,12 +31,10 @@ int			ft_strcmp(const char *s1, const char *s2)
 	{
 		if (*i1 != *i2)
 			return (ft_cmp((const char *)(i1), (const char *)(i2)));
-		/*if (((*i1++ - lomagic) & himagic) && ft_zero((const char *)(i1 - 1)))
+		if (((*i1++ - lomagic) & himagic) && ft_zero((const char *)(i1 - 1)))
 			return (ft_cmp((const char *)(i1 - 1), (const char *)i2));
 		else if (((*i2++ - lomagic) & himagic)
 					&& ft_zero((const char *)(i2 - 1)))
-			return (ft_cmp((const char *)(i1 - 1), (const char *)(i2 - 1)));*/
-		++i1;
-		++i2;
+			return (ft_cmp((const char *)(i1 - 1), (const char *)(i2 - 1)));
 	}
 }
