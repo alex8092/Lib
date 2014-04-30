@@ -20,6 +20,9 @@ obj/ft_putstr_fd_static.o: /usr/include/getopt.h
 obj/ft_putendl.o: include/ft_common.h /usr/include/unistd.h
 obj/ft_putendl.o: /usr/include/features.h /usr/include/stdc-predef.h
 obj/ft_putendl.o: /usr/include/getopt.h
+obj/ft_sort.o: include/ft_common.h /usr/include/unistd.h
+obj/ft_sort.o: /usr/include/features.h /usr/include/stdc-predef.h
+obj/ft_sort.o: /usr/include/getopt.h
 obj/ft_strjoin.o: include/ft_common.h /usr/include/unistd.h
 obj/ft_strjoin.o: /usr/include/features.h /usr/include/stdc-predef.h
 obj/ft_strjoin.o: /usr/include/getopt.h /usr/include/stdlib.h
