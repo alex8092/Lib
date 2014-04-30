@@ -1,4 +1,4 @@
-#include "common.h"
+#include "ft_common.h"
 
 int	ft_findinarray(char *array, char c)
 {

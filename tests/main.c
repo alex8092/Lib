@@ -1,4 +1,4 @@
-#include "common.h"
+#include "ft_common.h"
 #include <stdlib.h>
 #include <time.h>
 #include <strings.h>
@@ -17,6 +17,17 @@ clock_t	end_test()
 	return clock() - begin;
 }
 
+char	*ft_strchr2(char *str, int c)
+{
+	const char ch = c;
+
+	while (*str && *str != ch)
+		++str;
+	if (*str == ch)
+		return (str);
+	return (NULL);
+}
+
 void	performing_strchr(void)
 {
 	char	*str;
@@ -25,7 +36,7 @@ void	performing_strchr(void)
 
 	str = malloc(10000000);
 	str2 = malloc(10000000);
-	for (i = 0; i < 10000;++i)
+	for (i = 0; i < 100000;++i)
 	{
 		str[i] = (i == 60000) ? 'B':'A';
 		str2[i] = (i == 60000) ? 'D':'E';
@@ -37,12 +48,16 @@ void	performing_strchr(void)
 		printf("%s\n\n%s\n", str, str2);
 	begin_test();
 	for (i = 0; i < 100000; ++i)
-		memcpy(str2, str, 1000000);
+		strchr(str, 'B');
 	printf("strchr : %ld\n", end_test());
 	begin_test();
 	for (i = 0; i < 100000; ++i)
-		ft_memcpy(str2, str, 1000000);
+		ft_strchr(str, 'B');
 	printf("ft_strchr : %ld\n", end_test());
+	begin_test();
+	for (i = 0; i < 100000; ++i)
+		ft_strchr2(str, 'B');
+	printf("ft_strchr2 : %ld\n", end_test());
 	free(str);
 }
 

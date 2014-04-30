@@ -1,4 +1,4 @@
-#include "common.h"
+#include "ft_common.h"
 #include <limits.h>
 #include <stdint.h>
 #include <stdio.h>

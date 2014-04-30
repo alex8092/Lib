@@ -1,4 +1,4 @@
-#include "common.h"
+#include "ft_common.h"
 #include <stdlib.h>
 
 void	*ft_memalloc(size_t n)
@@ -7,14 +7,13 @@ void	*ft_memalloc(size_t n)
 	size_t	i;
 
 	ptr = (char *)malloc(n);
-	if (ptr)
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (i < n)
 	{
-		i = 0;
-		while (i < n)
-		{
-			ptr[i] = 0;
-			++i;
-		}
+		ptr[i] = 0;
+		++i;
 	}
 	return ((void *)ptr);
 }
