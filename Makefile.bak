@@ -61,7 +61,7 @@ Makefile.deps: $(SRCS) $(HEADERS)
 ifeq ($(OS),Darwin)
 	@makedepend $(CFLAGS) -- $(SRCS) > Makefile.deps 2> /dev/null
 else
-	@makedepend -- $(CFLAGS) -- $(SRCS) -f- > Makefile.deps 2> /dev/null
+	@makedepend -- $(CFLAGS) -- $(SRCS) > Makefile.deps 2> /dev/null
 endif
 	@\vim Makefile.deps -c '%s/src\//obj\//g' -c wq
 

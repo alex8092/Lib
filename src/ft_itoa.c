@@ -16,7 +16,7 @@ char		*ft_itoa(long int nbr)
 	nbr = (nbr < 0) ? nbr * -1 : nbr;
 	while (n <= nbr && ++i)
 		n *= 10;
-	if ((str = malloc(sizeof(char) * i + 1)) != NULL)
+	if ((str = malloc(sizeof(char) * (i + 1))) != NULL)
 	{
 		str[0] = '-';
 		i = neg;
