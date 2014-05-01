@@ -31,6 +31,11 @@ char				*ft_strchr(const char *str, int c)
 	const uint64_t	himagic = ((0x80808080L << 16) << 16) | 0x80808080L;
 	const uint64_t	lomagic = ((0x01010101L << 16) << 16) | 0x01010101L;
 
+	while (*str && *str != c)
+		++str;
+	if (*str == c)
+		return (str);
+	return (NULL);
 	while (((uint64_t)str & (sizeof(uint64_t) - 1)) != 0)
 	{
 		if (*str == ch)

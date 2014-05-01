@@ -2,7 +2,7 @@ CC = gcc
 
 NAME = lib/libft.a
 
-DEBUG = false
+DEBUG = true
 
 CFLAGS = -Wall -Wextra -Iinclude -march=native
 
