@@ -21,13 +21,13 @@ static size_t	ft_sort_bis(char **tab, size_t len, int (*cmp)())
 		if (r[3] == 1 && cmp(tab[r[0]], tab[r[2]]) > 0)
 		{
 			ft_swap(tab, r[0], r[2]);
-			r[0] = r[2];
+			r[0] = r[2]--;
 			r[3] = 2;
 		}
 		else if (r[3] == 2 && cmp(tab[r[1]], tab[r[0]]) > 0)
 		{
 			ft_swap(tab, r[0], r[1]);
-			r[0] = r[1];
+			r[0] = r[1]--;
 			r[3] = 1;
 		}
 		r[2] = (r[3] == 1) ? r[2] - 1 : r[2];
