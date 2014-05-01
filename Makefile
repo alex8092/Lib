@@ -56,7 +56,7 @@ fclean: clean
 re: fclean all
 
 Makefile_deps: $(SRCS) $(HEADERS)
-	@makedepend -- $(CFLAGS) -- $(SRCS) -f- > Makefile.deps 2> /dev/null
-	@\vim Makefile.deps -c '%s/src\//obj\//g' -c wq
+	makedepend -- $(CFLAGS) -- $(SRCS) -f- > Makefile.deps 2> /dev/null
+	\vim Makefile.deps -c '%s/src\//obj\//g' -c wq
 
 .PHONY: clean fclean all re test run tests/test.bin Makefile_deps
