@@ -6,12 +6,14 @@
 /*   By: amerle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/02 05:34:28 by amerle            #+#    #+#             */
-/*   Updated: 2014/05/02 05:34:28 by amerle           ###   ########.fr       */
+/*   Updated: 2014/05/02 05:39:27 by amerle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_common.h"
 #include <string.h>
+
+#define NORME_HACK size_t	r[] = { 0, 0, len - 1, 1 }
 
 static void		ft_swap(char **tab, size_t i, size_t j)
 {
@@ -24,8 +26,7 @@ static void		ft_swap(char **tab, size_t i, size_t j)
 
 static size_t	ft_sort_bis(char **tab, size_t len, int (*cmp)())
 {
-	size_t	r[] = { 0, 0, len - 1, 1 };
-
+	NORME_HACK;
 	if (len < 2)
 		return (0);
 	while ((r[1] < len / 2 && r[2] > 0) || (r[2] > len / 2 && r[1] < len))

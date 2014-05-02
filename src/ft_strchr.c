@@ -6,7 +6,7 @@
 /*   By: amerle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/02 05:34:28 by amerle            #+#    #+#             */
-/*   Updated: 2014/05/02 05:34:28 by amerle           ###   ########.fr       */
+/*   Updated: 2014/05/02 05:42:32 by amerle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,29 @@ static const char	*ft_strchr_bis(const char *cp, const char ch)
 	return (NULL);
 }
 
+static int			align(const char **str2, const char ch)
+{
+	const char	*str;
+
+	str = *str2;
+	while (((uint64_t)str & (sizeof(uint64_t) - 1)) != 0)
+	{
+		if (*str == ch)
+		{
+			*str2 = str;
+			return (1);
+		}
+		else if (!*str)
+		{
+			*str2 = NULL;
+			return (1);
+		}
+		++str;
+	}
+	*str2 = str;
+	return (0);
+}
+
 char				*ft_strchr(const char *str, int c)
 {
 	uint64_t		*s;
@@ -43,14 +66,8 @@ char				*ft_strchr(const char *str, int c)
 	const uint64_t	himagic = ((0x80808080L << 16) << 16) | 0x80808080L;
 	const uint64_t	lomagic = ((0x01010101L << 16) << 16) | 0x01010101L;
 
-	while (((uint64_t)str & (sizeof(uint64_t) - 1)) != 0)
-	{
-		if (*str == ch)
-			return ((char *)str);
-		else if (!*str)
-			return (NULL);
-		++str;
-	}
+	if (align(&str, ch))
+		return ((char *)str);
 	magic = ch | (ch << 8) | (ch << 16) | (ch << 24);
 	magic = ~(((magic << 16) << 16) | magic);
 	s = (uint64_t *)str;
@@ -67,5 +84,5 @@ char				*ft_strchr(const char *str, int c)
 				return (NULL);
 		}
 	}
-	return NULL;
+	return (NULL);
 }

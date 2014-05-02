@@ -6,7 +6,7 @@
 /*   By: amerle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/02 05:34:27 by amerle            #+#    #+#             */
-/*   Updated: 2014/05/02 05:34:27 by amerle           ###   ########.fr       */
+/*   Updated: 2014/05/02 05:37:36 by amerle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_putnbr_rec(unsigned long int n)
 	}
 }
 
-void	ft_putnbr(long int number)
+void		ft_putnbr(long int number)
 {
 	ssize_t	ret;
 
