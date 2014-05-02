@@ -61,7 +61,7 @@ re: fclean all
 
 ifeq ($(OS),Darwin)
 Makefile.deps: $(SRCS) $(HEADERS)
-	makedepend $(INCLUDES) --  -- $(SRCS) -f- > Makefile.deps
+	makedepend $(INCLUDES) -- $(SRCS) -f- > Makefile.deps
 	@\vim Makefile.deps -c '%s/src\//obj\//g' -c wq
 else
 Makefile.deps: $(SRCS) $(HEADERS)
