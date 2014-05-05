@@ -24,14 +24,15 @@ static ssize_t	last_ret(int set, ssize_t ret)
 
 static int		get_line(char **buf, char *find, char **line, size_t *bufsize)
 {
-	const size_t	len = find - *buf;
+	const size_t	len = (buf) ? find - *buf : 0;
 
 	if (*buf && find)
 	{
-		*line = ft_strndup(*buf, len);
+		*line = strndup(*buf, len);
+		printf("len : %ld - line : %ld\n", len, strlen(*line));
 		if (*bufsize - len != 0)
 		{
-			ft_memcpy(*buf, find + 1, *bufsize - len - 1);
+			memcpy(*buf, find + 1, *bufsize - len - 1);
 			*bufsize -= len + 1;
 			(*buf)[*bufsize] = 0;
 		}
@@ -39,8 +40,6 @@ static int		get_line(char **buf, char *find, char **line, size_t *bufsize)
 			*bufsize = 0;
 		if (!*bufsize)
 		{
-			free(*buf);
-			*buf = NULL;
 		}
 	}
 	return ((len || *bufsize || last_ret(0, 0)) ? 1 : 0);
@@ -58,10 +57,9 @@ static void		merge(char **buffer, char *buf, ssize_t ret, size_t *bufsize)
 	}
 	else
 	{
-		*buffer = ft_strndup(buf, ret);
+		*buffer = strndup(buf, ret);
 		*bufsize = ret;
 	}
-	free(ptr);
 }
 
 static char		*ft_find(char *buffer, size_t bufsize)
@@ -69,7 +67,7 @@ static char		*ft_find(char *buffer, size_t bufsize)
 	static size_t	offset = 0;
 	char			*find;
 
-	if (buffer && (find = ft_strchr(buffer + offset, '\n')))
+	if (buffer && (find = strchr(buffer + offset, '\n')))
 	{
 		offset = 0;
 		return (find);
@@ -93,7 +91,7 @@ int				ft_getnextline(int fd, char **line)
 		if ((ret = read(fd, buf, GNL_BUFSIZE)) == 0 && buff)
 		{
 			last_ret(1, 0);
-			return (get_line(&buff, buff + ft_strlen(buff), line, &bsize));
+			return (get_line(&buff, buff + strlen(buff), line, &bsize));
 		}
 		else if (ret > 0)
 		{
