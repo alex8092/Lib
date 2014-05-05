@@ -86,15 +86,6 @@ void	performing_strchr(void)
 
 int	main(void)
 {
-	char	*tab[] = { "af", "ag", "aa", "ac", "az", "aa", "ap", 0 };
-	size_t	i;
-
-	ft_sort(tab, NULL);
-	i = 0;
-	while (tab[i])
-	{
-		printf("str : %s\n", tab[i]);
-		++i;
-	}
+	write(1, "test\r\n", 6);
 	return (0);
 }
