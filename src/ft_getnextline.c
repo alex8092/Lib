@@ -28,7 +28,7 @@ static int		get_line(char **buf, char *find, char **line, size_t *bufsize)
 
 	if (*buf && find)
 	{
-		if (*find == 10)
+		if (len > 0 && *(find - 1) == '\r')
 			*line = ft_strndup(*buf, len - 1);
 		else
 			*line = ft_strndup(*buf, len);
